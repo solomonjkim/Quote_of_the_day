@@ -8,8 +8,15 @@ import android.widget.TextView;
 import android.content.Intent;
 
 public class QuoteActivity extends AppCompatActivity {
-    private static final String KEY_QUOTE_INDEX = "quoteIndex";
     public static final String EXTRA_AUTHOR_FACT = "edu.andrews.cptr252.ksolomon.quoteoftheday.author_fact";
+    private static final String KEY_QUOTE_INDEX = "quoteIndex";
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putInt(KEY_QUOTE_INDEX, mCurrentIndex);
+    }
 
     private TextView mQuoteTextView;
     private TextView mAuthorTextView;
@@ -47,6 +54,10 @@ public class QuoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote);
+
+        if (savedInstanceState != null){
+            mCurrentIndex = savedInstanceState.getInt(KEY_QUOTE_INDEX);
+        }
 
         mQuoteTextView = findViewById(R.id.quoteTextView);
         int quote = mQuoteList[mCurrentIndex].getQuote();
