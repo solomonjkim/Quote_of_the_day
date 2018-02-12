@@ -12,11 +12,14 @@ public class Quote {
 
     private int mAuthorFact;
 
+    private int mImage;
 
-    public Quote(int quote, int author, int authorFact){
+
+    public Quote(int quote, int author, int authorFact, int image){
         mQuote = quote;
         mAuthor = author;
         mAuthorFact = authorFact;
+        mImage = image;
     }
 
 
@@ -26,5 +29,7 @@ public class Quote {
     public void setAuthor(int author)   {mAuthor = author;}
     public int getAuthorFact() {return mAuthorFact;}
     public void setAuthorFact(int mAuthorFact) {this.mAuthorFact = mAuthorFact;}
+    public int getImage() {return mImage;}
+    public void setImage(int mImage) {this.mImage = mImage;}
 
 }

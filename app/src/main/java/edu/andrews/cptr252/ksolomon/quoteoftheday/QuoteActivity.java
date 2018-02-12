@@ -38,10 +38,13 @@ public class QuoteActivity extends AppCompatActivity {
 
 
     private Quote[] mQuoteList = new Quote[] {
-            new Quote(R.string.quote_text_0, R.string.quote_author_0, R.string.author_fact_0),
-            new Quote(R.string.quote_text_1, R.string.quote_author_1, R.string.author_fact_1),
-            new Quote(R.string.quote_text_2, R.string.quote_author_2, R.string.author_fact_2)
+            new Quote(R.string.quote_text_0, R.string.quote_author_0, R.string.author_fact_0, R.drawable.waterpic),
+            new Quote(R.string.quote_text_1, R.string.quote_author_1, R.string.author_fact_1, R.drawable.mountain_pic),
+            new Quote(R.string.quote_text_2, R.string.quote_author_2, R.string.author_fact_2, R.drawable.fire),
+            new Quote(R.string.quote_text_3, R.string.quote_author_3, R.string.author_fact_3, R.drawable.wind),
+            new Quote(R.string.quote_text_4, R.string.quote_author_4, R.string.author_fact_4, R.drawable.airbender)
     };
+
 
     private int mCurrentIndex = 0;
 
@@ -59,14 +62,17 @@ public class QuoteActivity extends AppCompatActivity {
     private void updateQuote() {
         int quote = mQuoteList[mCurrentIndex].getQuote();
         int author = mQuoteList[mCurrentIndex].getAuthor();
+        int image = mQuoteList[mCurrentIndex].getImage();
 
         mQuoteTextView.setText(quote);
         mAuthorTextView.setText(author);
+        mImageView .setImageResource(image);
     }
 
     /** Setup and inflate layout.
      * @param savedInstanceState previously saved Bundle
      */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +83,15 @@ public class QuoteActivity extends AppCompatActivity {
         }
 
         mImageView = (ImageView) findViewById(R.id.imageView);
-        mImageView.setImageResource(R.drawable.mountain_pic);
+        int image = mQuoteList[mCurrentIndex].getImage();
+        mImageView.setImageResource(image);
+        mImageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                displayAuthorFact();
+            }
+        });
+
         mQuoteTextView = findViewById(R.id.quoteTextView);
         int quote = mQuoteList[mCurrentIndex].getQuote();
         mQuoteTextView.setText(quote);
