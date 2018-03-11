@@ -7,7 +7,7 @@ import android.widget.TextView;
 /** Activity that displays a fact about the author of a quote.
  *
  */
-public class AuthorFactActivity extends AppCompatActivity {
+public class AuthorFactFragment extends AppCompatActivity {
     private TextView mAuthorFactTextView;
 
     /** Inflate layout. Display the fact sent by QuoteActivity

@@ -14,7 +14,7 @@ import android.content.Intent;
  */
 
 public class QuoteActivity extends AppCompatActivity {
-    /** Key for fact about author stored in Intent sent to AuthorFactActivity. */
+    /** Key for fact about author stored in Intent sent to AuthorFactFragment. */
     public static final String EXTRA_AUTHOR_FACT = "edu.andrews.cptr252.ksolomon.quoteoftheday.author_fact";
     private static final String KEY_QUOTE_INDEX = "quoteIndex";
 
@@ -51,7 +51,7 @@ public class QuoteActivity extends AppCompatActivity {
     /** Launch activity to display author fact */
     private void displayAuthorFact(){
 
-        Intent i = new Intent(QuoteActivity.this, AuthorFactActivity.class);
+        Intent i = new Intent(QuoteActivity.this, AuthorFactFragment.class);
 
         i.putExtra(EXTRA_AUTHOR_FACT, mQuoteList[mCurrentIndex].getAuthorFact());
 
