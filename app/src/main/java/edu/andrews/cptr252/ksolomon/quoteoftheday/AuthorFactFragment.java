@@ -1,30 +1,40 @@
 package edu.andrews.cptr252.ksolomon.quoteoftheday;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 /** Activity that displays a fact about the author of a quote.
  *
  */
-public class AuthorFactFragment extends AppCompatActivity {
+public class AuthorFactFragment extends Fragment {
     private TextView mAuthorFactTextView;
 
-    /** Inflate layout. Display the fact sent by QuoteActivity
+
+    /** Inflate layout. Display the fact sent by QuoteFragment
      *
      * @param savedInstanceState Bundle object used to save activity state.
      */
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_author_fact);
+    }
 
-        mAuthorFactTextView = (TextView) findViewById(R.id.authorFactTextView);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
-        int authorFact = getIntent().getIntExtra(QuoteActivity.EXTRA_AUTHOR_FACT, R.string.fact_error);
+        View v = inflater.inflate(R.layout.activity_author_fact, container, false);
 
+        mAuthorFactTextView = (TextView) v.findViewById(R.id.authorFactTextView);
+        int authorFact = getActivity().getIntent().getIntExtra(QuoteFragment.EXTRA_AUTHOR_FACT, R.string.fact_error);
         mAuthorFactTextView.setText(authorFact);
 
+        return v;
     }
 }

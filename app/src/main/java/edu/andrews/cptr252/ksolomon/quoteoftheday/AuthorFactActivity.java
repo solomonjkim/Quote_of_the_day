@@ -6,11 +6,10 @@ import android.support.v4.app.Fragment;
  * Created by solomonjkim on 3/11/18.
  */
 
-public class QuoteActivity  extends SingleFragmentActivity{
+public class AuthorFactActivity extends SingleFragmentActivity{
 
-
-    @Override
     protected Fragment createFragment(){
-        return new QuoteFragment();
+        return new AuthorFactFragment();
     }
+
 }
