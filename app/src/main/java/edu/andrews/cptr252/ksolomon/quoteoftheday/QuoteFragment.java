@@ -15,6 +15,9 @@ import android.content.Intent;
 /**
  * Main activity for the application.
  * Displays a series of quotes.
+ *
+ * @author Solomon Kim
+ * @since 03/11/18
  */
 
 public class QuoteFragment extends Fragment {
@@ -33,6 +36,7 @@ public class QuoteFragment extends Fragment {
         savedInstanceState.putInt(KEY_QUOTE_INDEX, mCurrentIndex);
     }
 
+    /** Establishing variables for each text. */
     private TextView mQuoteTextView;
     private TextView mAuthorTextView;
     private Button mNextButton;
@@ -40,7 +44,7 @@ public class QuoteFragment extends Fragment {
 
 
 
-
+    /** Creates the array used to set and reference all text values and images*/
     private Quote[] mQuoteList = new Quote[] {
             new Quote(R.string.quote_text_0, R.string.quote_author_0, R.string.author_fact_0, R.drawable.waterpic),
             new Quote(R.string.quote_text_1, R.string.quote_author_1, R.string.author_fact_1, R.drawable.mountain_pic),
@@ -51,8 +55,6 @@ public class QuoteFragment extends Fragment {
 
 
     private int mCurrentIndex = 0;
-
-    /** Launch activity to display author fact */
 
 /** Display the quote at the current index */
     private void updateQuote() {
@@ -65,19 +67,33 @@ public class QuoteFragment extends Fragment {
         mImageView .setImageResource(image);
     }
 
-    /** Setup and inflate layout.
+    /** Setup layout, but not displaying that is left up to the view.
      * @param savedInstanceState previously saved Bundle
      */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_quote);
+
 
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_QUOTE_INDEX);
         }
     }
+
+    /** This method creates the view that will display the author, quote, and image. The only change when using fragments is that
+     * now there must be intents used in order to display the Author Fact because we are then referencing another fragment. At the end
+     * we call for updateQuote() in order to set those values in the fragment.
+     *
+     * @author Solomon Kim
+     * @since 03/11/18
+     *
+     * @param container Allows us to use .xml constraints.
+     * @param inflater Inflates the widgets
+     * @param savedInstanceState Bundle object used to save activity state.
+     *
+     * @return View
+     * */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

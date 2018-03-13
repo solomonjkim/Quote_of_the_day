@@ -4,15 +4,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by solomonjkim on 2/14/18.
+/** This class allows us to reference the fragments in AuthorFactActivity and QuoteActivity
+ * @author Solomon Kim
+ * @since 03/11/18.
  */
-
-
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
+    /** Here we define the fragment */
     protected abstract Fragment createFragment();
 
+    /** This method allows each fragment to continue to run in the background when created
+     *
+     * @param savedInstanceState Bundle object used to save activity state.
+     * */
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
